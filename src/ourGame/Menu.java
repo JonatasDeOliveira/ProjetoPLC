@@ -53,6 +53,8 @@ public class Menu extends JFrame {
 	private JLabel player_3;
 	private JLabel player_2;
 	private JLabel lblInstructions;
+	private JComponent label_instructions;
+	private JLabel name_game;
 
 
 	/**
@@ -75,27 +77,6 @@ public class Menu extends JFrame {
 
 			}
 		});
-		
-		lblInstructions = new JLabel("INSTRUCTIONS:");
-		lblInstructions.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInstructions.setForeground(new Color(255, 140, 0));
-		lblInstructions.setFont(new Font("Courier New", Font.PLAIN, 73));
-		lblInstructions.setBounds(262, 60, 578, 111);
-		getContentPane().add(lblInstructions);
-		lblInstructions.setVisible(false);
-		
-		lblInstructions = new JLabel("INSTRUCTIONS:");
-		lblInstructions.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInstructions.setForeground(new Color(255, 140, 0));
-		lblInstructions.setFont(new Font("Courier New", Font.PLAIN, 73));
-		lblInstructions.setBounds(241, 45, 605, 111);
-		getContentPane().add(lblInstructions);
-		
-		JLabel label_instructions = new JLabel("");
-		label_instructions.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image.png")));
-		label_instructions.setBounds(0, 0, 1094, 682);
-		getContentPane().add(label_instructions);
-		label_instructions.setVisible(false);
 		btn_StarGame.setBounds(441, 539, 185, 42);
 		getContentPane().add(btn_StarGame);
 		btn_StarGame.setVisible(false);
@@ -188,12 +169,20 @@ public class Menu extends JFrame {
 		player_4.setBounds(113, 291, 150, 150);
 		getContentPane().add(player_4);
 
-		JLabel name_game = new JLabel("THREAD RUN");
+		name_game = new JLabel("THREAD RUN");
 		name_game.setHorizontalAlignment(SwingConstants.CENTER);
 		name_game.setForeground(new Color(255, 140, 0));
 		name_game.setFont(new Font("Courier New", Font.PLAIN, 73));
 		name_game.setBounds(277, 60, 540, 111);
 		getContentPane().add(name_game);
+		
+		lblInstructions = new JLabel("INSTRUCTIONS:");
+		lblInstructions.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInstructions.setForeground(new Color(255, 140, 0));
+		lblInstructions.setFont(new Font("Courier New", Font.PLAIN, 73));
+		lblInstructions.setBounds(258, 60, 605, 111);
+		getContentPane().add(lblInstructions);
+		lblInstructions.setVisible(false);
 
 		JLabel fundo_menu = new JLabel("");
 		fundo_menu.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image.png")));
@@ -211,7 +200,7 @@ public class Menu extends JFrame {
 		}else if (count == 2) {
 			lblSelectYourPlayer.setText("PRESS START!!!");
 			lblInstructions.setVisible(true);
-			label_instructions.setVisible(true);
+			name_game.setVisible(false);	
 			//btn_StarGame.setVisible(true);
 			player_1.setVisible(false);
 			player_2.setVisible(false);
