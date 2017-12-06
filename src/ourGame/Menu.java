@@ -35,7 +35,7 @@ public class Menu extends JFrame {
 				try {
 					Menu frame = new Menu();
 					frame.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -44,20 +44,26 @@ public class Menu extends JFrame {
 	}
 	private int count;
 	private JButton btn_StarGame;
-	private JComponent btn_StartGame;
+	private ImageIcon[] player_images = new ImageIcon[3];
+
+
 	private JLabel lblSelectYourPlayer;
-	
+	private JLabel player_4;
+	private JLabel player_1;
+	private JLabel player_3;
+	private JLabel player_2;
+
 
 	/**
 	 * Create the frame.
 	 */
 	public Menu() {
-		int count = 0;
-		
+
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1110, 720);
 		getContentPane().setLayout(null);
-		
+
 		btn_StarGame = new JButton("Start ");
 		btn_StarGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -67,54 +73,56 @@ public class Menu extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 			}
 		});
 		btn_StarGame.setBounds(441, 539, 185, 42);
 		getContentPane().add(btn_StarGame);
 		btn_StarGame.setVisible(false);
-		
-		JLabel label_2 = new JLabel("New label");
-		label_2.addMouseListener(new MouseAdapter() {
+		player_1 = new JLabel("New label");
+
+		player_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				label_2.setVisible(false);
+				player_1.setVisible(false);
+				addImageIcon((ImageIcon)player_1.getIcon());
 				verificCount();
 				increment();
-				
+
 			}
-			
+
 		});
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setIcon(new ImageIcon(Menu.class.getResource("/ourGame/doug_player.jpg")));
-		label_2.setBounds(820, 291, 150, 150);
-		getContentPane().add(label_2);
-		
-		JLabel label = new JLabel("New label");
-		
-		label.addMouseListener(new MouseAdapter() {
+		player_1.setHorizontalAlignment(SwingConstants.CENTER);
+		player_1.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/valdemiro_player.jpg")));
+		player_1.setBounds(339, 291, 150, 150);
+		getContentPane().add(player_1);
+
+		player_2 = new JLabel("New label");
+		player_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				label.setVisible(false);
+				player_2.setVisible(false);
+				addImageIcon((ImageIcon)player_2.getIcon());
 				verificCount();
 				increment();
-				
+
 			}
-			
+
 		});
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon(Menu.class.getResource("/ourGame/valdemiro_player.jpg")));
-		label.setBounds(339, 291, 150, 150);
-		getContentPane().add(label);
+		player_2.setHorizontalAlignment(SwingConstants.CENTER);
+		player_2.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/doug_player.jpg")));
+		player_2.setBounds(820, 291, 150, 150);
+		getContentPane().add(player_2);
+
 		javax.swing.Timer t;
-		
+
 		lblSelectYourPlayer = new JLabel("SELECT PLAYER 1");
 		lblSelectYourPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectYourPlayer.setForeground(new Color(255, 140, 0));
 		lblSelectYourPlayer.setFont(new Font("Courier New", Font.PLAIN, 48));
 		lblSelectYourPlayer.setBounds(109, 167, 846, 111);
 		getContentPane().add(lblSelectYourPlayer);
-		
+
 		t = new javax.swing.Timer(300, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -126,49 +134,51 @@ public class Menu extends JFrame {
 			}
 		});
 		t.start();
-		JLabel label_1 = new JLabel("New label");
-		label_1.addMouseListener(new MouseAdapter() {
+		player_3 = new JLabel("New label");
+		player_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				label_1.setVisible(false);
+				player_3.setVisible(false);
+				addImageIcon((ImageIcon)player_3.getIcon());
 				verificCount();
 				increment();
-				
+
 			}
-			
+
 		});
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setIcon(new ImageIcon(Menu.class.getResource("/ourGame/ullayne_player.jpg")));
-		label_1.setBounds(579, 291, 150, 150);
-		getContentPane().add(label_1);
-		
-		JLabel lbl_player = new JLabel("New label");
-		lbl_player.addMouseListener(new MouseAdapter() {
+		player_3.setHorizontalAlignment(SwingConstants.CENTER);
+		player_3.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/ullayne_player.jpg")));
+		player_3.setBounds(579, 291, 150, 150);
+		getContentPane().add(player_3);
+
+		player_4 = new JLabel("New label");
+		player_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				lbl_player.setVisible(false);
+				player_4.setVisible(false);
+				addImageIcon((ImageIcon)player_4.getIcon());
 				verificCount();
 				increment();
-				
+
 			}
-			
+
 		});
-		lbl_player.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_player.setIcon(new ImageIcon(Menu.class.getResource("/ourGame/lucas_player.jpg")));
-		lbl_player.setBounds(113, 291, 150, 150);
-		getContentPane().add(lbl_player);
-		
+		player_4.setHorizontalAlignment(SwingConstants.CENTER);
+		player_4.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/lucas_player.jpg")));
+		player_4.setBounds(113, 291, 150, 150);
+		getContentPane().add(player_4);
+
 		JLabel lblNewLabel_1 = new JLabel("CODE RUN");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(255, 140, 0));
 		lblNewLabel_1.setFont(new Font("Courier New", Font.PLAIN, 73));
 		lblNewLabel_1.setBounds(315, 57, 435, 111);
 		getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Menu.class.getResource("/ourGame/fundo_image.png")));
-		lblNewLabel.setBounds(0, 0, 1094, 682);
-		getContentPane().add(lblNewLabel);
+
+		JLabel fundo_menu = new JLabel("");
+		fundo_menu.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image.png")));
+		fundo_menu.setBounds(0, 0, 1094, 682);
+		getContentPane().add(fundo_menu);
 	}
 	public void increment() {
 		count++;
@@ -181,6 +191,20 @@ public class Menu extends JFrame {
 		}else if (count == 2) {
 			lblSelectYourPlayer.setText("PRESS START!!!");
 			btn_StarGame.setVisible(true);
+			player_1.setVisible(false);
+			player_2.setVisible(false);
+			player_3.setVisible(false);
+			player_4.setVisible(false);
+			
+			
+		}
+	}
+	public void addImageIcon(ImageIcon x) {
+		for (int i = 0; i < player_images.length; i++) {
+			if(player_images[i] == null){
+				player_images[i] = x;
+			}
+
 		}
 	}
 }
