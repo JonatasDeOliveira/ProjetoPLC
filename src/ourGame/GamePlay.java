@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,13 +14,25 @@ import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class GamePlay {
+public class GamePlay implements Runnable{
 	
 	private String powerUps[] = new String[6];
 	private boolean used[];
+	private ImageIcon[] player_images;
 	
-	public GamePlay() throws IOException{
-		int numPlayers = 3;
+	public GamePlay(ImageIcon[] player_images) throws IOException{
+		this.player_images = player_images;
+	}
+
+	@Override
+	public void run() {
+		try {
+			call();
+		} catch (IOException e) {}
+	}
+
+	private void call() throws IOException {
+int numPlayers = 3;
 		
 		used = new boolean[6];
 		for(int i = 0;i<6;i++) used[i] = false;
@@ -98,11 +111,11 @@ public class GamePlay {
 		gerador.getCont2().isPaused = false;
 		gerador.getCont3().isPaused = false;
 		gerador.start();
-		gm.run();
+		gmT.start();
 		
 	}
 	
-	public static void main(String[] args) throws IOException{
+	/*public static void main(String[] args) throws IOException{
 		new GamePlay();
-	}
+	}*/
 }

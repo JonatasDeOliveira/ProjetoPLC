@@ -44,7 +44,7 @@ public class Menu extends JFrame {
 	}
 	private int count;
 	private JButton btn_StarGame;
-	private ImageIcon[] player_images = new ImageIcon[3];
+	private static ImageIcon[] player_images = new ImageIcon[3];
 
 
 	private JLabel lblSelectYourPlayer;
@@ -68,11 +68,9 @@ public class Menu extends JFrame {
 		btn_StarGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					new GamePlay();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					new Thread(new GamePlay(player_images)).start();
+					setVisible(false);
+				} catch (IOException e) {}
 
 			}
 		});
@@ -120,7 +118,7 @@ public class Menu extends JFrame {
 		lblSelectYourPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectYourPlayer.setForeground(new Color(255, 140, 0));
 		lblSelectYourPlayer.setFont(new Font("Courier New", Font.PLAIN, 48));
-		lblSelectYourPlayer.setBounds(109, 167, 846, 111);
+		lblSelectYourPlayer.setBounds(124, 167, 846, 111);
 		getContentPane().add(lblSelectYourPlayer);
 
 		t = new javax.swing.Timer(300, new ActionListener() {
@@ -172,7 +170,7 @@ public class Menu extends JFrame {
 		name_game.setHorizontalAlignment(SwingConstants.CENTER);
 		name_game.setForeground(new Color(255, 140, 0));
 		name_game.setFont(new Font("Courier New", Font.PLAIN, 73));
-		name_game.setBounds(315, 57, 435, 111);
+		name_game.setBounds(277, 60, 540, 111);
 		getContentPane().add(name_game);
 
 		JLabel fundo_menu = new JLabel("");

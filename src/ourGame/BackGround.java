@@ -36,14 +36,15 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	Counter counterPw;
 	private String powerUps[];
 	private boolean printPw;
-	Memoria mem;
+	private Memoria mem;
+	private int memVel;
 
 	public BackGround(int initPosX, int initPosY, String imgName, int width, int height, Player player, int index,
 			GeradorPwUp gerador, String powerUps[], Memoria mem) throws IOException {
 		// addMouseListener(this);
 
 		this.mem = mem;
-
+		this.memVel = 3;
 		this.printPw = true;
 		this.dir = 0;
 		addKeyListener(this);
@@ -77,8 +78,8 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 						movePowerUp();
 					if (!printPw)
 						moveMemoria();
-					repaint();
 				}
+				repaint();
 			}
 		});
 		bg1 = bg1.getScaledInstance(width, height, 1);
@@ -161,9 +162,11 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 		while (true) {
 
 			if (!printPw) {
+				
 				synchronized (mem) {
 					if (collision(mem)) {
-
+						this.counterPw.setPaused(true);
+						gerador.setOthersIsPaused(this.index, true);
 						Image i = null;
 						try {
 							i = ImageIO.read(getClass().getResource("mem" + this.index + ".png"));
@@ -175,7 +178,11 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 							Thread.sleep(1000);
 						} catch (InterruptedException e) {
 						}
-						// this.printPw = true;
+						// resetando tudo de volta ao normal
+						gerador.setOthersIsPaused(this.index, false);
+						this.counterPw.setPaused(false);
+						this.setPrintPw(true);
+						
 					}
 				}
 			}
@@ -191,7 +198,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 				if (this.pw1.isEnable()) {
 					if (collision(this.pw1)) {
 						if (this.pw1.getTipo() == 0) {
-							gerador.setOthersPaused(this.index);
+							gerador.setOthersIsPaused(this.index, true);
 						} else if (this.pw1.getTipo() == 1) {
 							this.counterPw.setPaused(true);
 						}
@@ -249,7 +256,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	}
 
 	public void moveMemoria() {
-		this.mem.setY(this.mem.getY() - 1);
+		this.mem.setY(this.mem.getY() - 3);
 	}
 
 	void setPowerUp(PowerUp pw) {
@@ -271,6 +278,13 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 
 	public void setPrintPw(boolean printPw) {
 		this.printPw = printPw;
+	}
+
+	public void setMem(Memoria m) {
+		this.mem = m;
+	}
+	public void setMemVel(int x) {
+		this.memVel = x;
 	}
 
 }
