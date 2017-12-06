@@ -162,8 +162,9 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 		while (true) {
 
 			if (!printPw) {
-				
+
 				synchronized (mem) {
+					gerador.setOthersIsPaused(this.index, false);
 					if (collision(mem)) {
 						this.counterPw.setPaused(true);
 						gerador.setOthersIsPaused(this.index, true);
@@ -173,16 +174,29 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 						} catch (IOException e) {
 						}
 
+						if (this.mem.getPlace() == 0) {
+							this.counterPw.setCounter(this.counterPw.getCounter() + 20);
+							this.mem.setPlace(this.mem.getPlace() + 1);
+						} else if (this.mem.getPlace() == 1) {
+							this.counterPw.setCounter(this.counterPw.getCounter() + 10);
+							this.mem.setPlace(this.mem.getPlace() + 1);
+						} else {
+							this.counterPw.setCounter(this.counterPw.getCounter() + 5);
+							this.mem.setPlace(this.mem.getPlace() + 1);
+						}
+
 						this.mem = new Memoria(this.mem.getX(), this.mem.getY(), i);
+
+						// resetando tudo de volta ao normal
 						try {
 							Thread.sleep(1000);
 						} catch (InterruptedException e) {
 						}
-						// resetando tudo de volta ao normal
 						gerador.setOthersIsPaused(this.index, false);
 						this.counterPw.setPaused(false);
 						this.setPrintPw(true);
-						
+
+
 					}
 				}
 			}
@@ -283,6 +297,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	public void setMem(Memoria m) {
 		this.mem = m;
 	}
+
 	public void setMemVel(int x) {
 		this.memVel = x;
 	}
