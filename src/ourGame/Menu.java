@@ -44,7 +44,6 @@ public class Menu extends JFrame {
 	private JLabel player_3;
 	private JLabel player_2;
 	private JLabel lblInstructions;
-	private JComponent label_instructions;
 	private JLabel name_game;
 
 
