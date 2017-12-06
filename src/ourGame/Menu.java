@@ -168,12 +168,12 @@ public class Menu extends JFrame {
 		player_4.setBounds(113, 291, 150, 150);
 		getContentPane().add(player_4);
 
-		JLabel lblNewLabel_1 = new JLabel("CODE RUN");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setForeground(new Color(255, 140, 0));
-		lblNewLabel_1.setFont(new Font("Courier New", Font.PLAIN, 73));
-		lblNewLabel_1.setBounds(315, 57, 435, 111);
-		getContentPane().add(lblNewLabel_1);
+		JLabel name_game = new JLabel("THREAD RUN");
+		name_game.setHorizontalAlignment(SwingConstants.CENTER);
+		name_game.setForeground(new Color(255, 140, 0));
+		name_game.setFont(new Font("Courier New", Font.PLAIN, 73));
+		name_game.setBounds(315, 57, 435, 111);
+		getContentPane().add(name_game);
 
 		JLabel fundo_menu = new JLabel("");
 		fundo_menu.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image.png")));
