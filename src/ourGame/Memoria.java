@@ -3,9 +3,10 @@ package ourGame;
 import java.awt.Image;
 
 public class Memoria extends Sprite{
-	
+	private int place;
 	public Memoria(int x, int y, Image img) {
 		super(x,y,img);
+		this.place = 0;
 	}
 
 	public int getX() {
@@ -31,6 +32,13 @@ public class Memoria extends Sprite{
 	public void setImg(Image img) {
 		this.img = img;
 	}
-	
+
+	public int getPlace() {
+		return place;
+	}
+
+	public void setPlace(int place) {
+		this.place = place;
+	}
 	
 }

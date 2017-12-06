@@ -50,6 +50,7 @@ public class GerenciadorMemoria implements Runnable {
 				} catch (IOException e) {}
 				
 				Memoria m = new Memoria(0,740,i);
+				m.setPlace(0);
 				bg1.setMem(m);
 				bg2.setMem(m);
 				bg3.setMem(m);
