@@ -33,7 +33,7 @@ public class Menu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Menu frame = new Menu(player_images);
+					Menu frame = new Menu();
 					frame.setVisible(true);
 
 				} catch (Exception e) {
@@ -69,11 +69,9 @@ public class Menu extends JFrame {
 		btn_StarGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					new GamePlay();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					new Thread(new GamePlay(player_images)).start();
+					setVisible(false);
+				} catch (IOException e) {}
 
 			}
 		});

@@ -46,16 +46,16 @@ public class GeradorPwUp{
 		this.cont3.setPaused(false);
 	}
 	
-	public void setOthersPaused(int i) {
+	public void setOthersIsPaused(int i, boolean flag) {
 		if(i == 1) {
-			this.cont2.setPaused(true);
-			this.cont3.setPaused(true);
+			this.cont2.setPaused(flag);
+			this.cont3.setPaused(flag);
 		}else if(i == 2) {
-			this.cont1.setPaused(true);
-			this.cont3.setPaused(true);
+			this.cont1.setPaused(flag);
+			this.cont3.setPaused(flag);
 		}else if(i == 3) {
-			this.cont1.setPaused(true);
-			this.cont2.setPaused(true);
+			this.cont1.setPaused(flag);
+			this.cont2.setPaused(flag);
 		}
 	}
 	
