@@ -33,7 +33,7 @@ public class Menu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Menu frame = new Menu(player_images);
+					Menu frame = new Menu();
 					frame.setVisible(true);
 
 				} catch (Exception e) {
