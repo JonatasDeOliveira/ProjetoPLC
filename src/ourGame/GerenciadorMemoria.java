@@ -49,7 +49,7 @@ public class GerenciadorMemoria implements Runnable {
 				bg3.pw1.disable();
 			}
 			
-			if (this.cont.getCounter()%50 == 0 && this.cont.getCounter() < 300 && this.cont.getCounter() > 0 && !this.isEndOfGame()) {
+			if (this.cont.getCounter()%30 == 0 && this.cont.getCounter() < 300 && this.cont.getCounter() > 0 && !this.isEndOfGame()) {
 				bg1.setPrintPw(false);
 				bg2.setPrintPw(false);
 				bg3.setPrintPw(false);
@@ -60,10 +60,9 @@ public class GerenciadorMemoria implements Runnable {
 					} catch (InterruptedException e) {}
 				}
 				
-				
 				Image i = null;
 				try {
-					i = ImageIO.read(getClass().getResource("mem.png"));
+					i = ImageIO.read(getClass().getResource("/ThreadRunImages/mem.png"));
 				} catch (IOException e) {}
 				
 				Memoria m = new Memoria(0,740,i);

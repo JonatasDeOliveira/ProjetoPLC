@@ -7,10 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -38,11 +41,14 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	private Memoria mem;
 	private boolean endOfGame;
 	private boolean gameRunning;
+	private ImageIcon player_image_icon;
+	Image image_icon;
 
 	public BackGround(int initPosX, int initPosY, String imgName, int width, int height, Player player, int index,
-			GerenciadorCounter gerador, String powerUps[], Memoria mem) throws IOException {
+			GerenciadorCounter gerador, String powerUps[], Memoria mem, ImageIcon player_image_icon) throws IOException {
 		// addMouseListener(this);
-
+		
+		this.player_image_icon = player_image_icon;
 		this.mem = mem;
 		this.printPw = true;
 		this.dir = 0;
@@ -65,7 +71,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 			this.counterPw = this.gerador.getCont3();
 		}
 		this.gameRunning = true;
-
+		image_icon = this.player_image_icon.getImage().getScaledInstance(50, 50, 100);
 		setFocusable(true);
 		bg2 = ImageIO.read(getClass().getResource(imgName));
 		bg1 = bg2;
@@ -112,6 +118,8 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 			g2d.drawImage(this.mem.getImg(), this.mem.getX(), this.mem.getY(), null);
 		}
 		g2d.drawString(this.counterPw.counter + "", 10, 20);
+		
+		g2d.drawImage(image_icon, 310, 620, null);
 
 	}
 
@@ -172,7 +180,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 						gerador.setOthersIsPaused(this.index, true);
 						Image i = null;
 						try {
-							i = ImageIO.read(getClass().getResource("mem" + this.index + ".png"));
+							i = ImageIO.read(getClass().getResource("/ThreadRunImages/mem" + this.index + ".png"));
 						} catch (IOException e) {
 						}
 
@@ -230,7 +238,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 						int k = rand.nextInt(6);
 
 						try {
-							image = ImageIO.read(getClass().getResource(this.powerUps[k]));
+							image = ImageIO.read(getClass().getResource("/ThreadRunImages/"+this.powerUps[k]));
 						} catch (IOException e1) {
 						}
 
