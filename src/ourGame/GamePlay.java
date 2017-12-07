@@ -57,27 +57,27 @@ public class GamePlay implements Runnable{
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 		
-		Image i = ImageIO.read(getClass().getResource("player1.png"));
+		Image i = ImageIO.read(getClass().getResource("/ThreadRunImages/player1.png"));
 		Player p1 = new Player(1,0+(frameWidth/2), 0, KeyCode.A, KeyCode.D, i);
-		i = ImageIO.read(getClass().getResource("player2.png"));
+		i = ImageIO.read(getClass().getResource("/ThreadRunImages/player2.png"));
 		Player p2 = new Player(2,0+(frameWidth/2), 0, KeyCode.B, KeyCode.M, i);
-		i = ImageIO.read(getClass().getResource("player3.png"));
+		i = ImageIO.read(getClass().getResource("/ThreadRunImages/player3.png"));
 		Player p3 = new Player(3,0+(frameWidth/2), 0, KeyCode.LEFT, KeyCode.RIGHT, i);
 		
 		GerenciadorCounter gerador = new GerenciadorCounter();
 		
-		Image memImg = ImageIO.read(getClass().getResource("mem.png"));
+		Image memImg = ImageIO.read(getClass().getResource("/ThreadRunImages/mem.png"));
 		Memoria mem = new Memoria(0,740,memImg);
 		
-		JPanel bg1 = new BackGround(0, 0, "cplusplus.png" ,frameWidth, 3623, p1, 1, gerador, powerUps, mem, player_images[0]);
+		JPanel bg1 = new BackGround(0, 0, "/ThreadRunImages/cplusplus.png" ,frameWidth, 3623, p1, 1, gerador, powerUps, mem, player_images[0]);
 		bg1.setBounds(0, 0, 370, 720);
 		frame.getContentPane().add(bg1);
 		
-		JPanel bg2 = new BackGround(0, 0, "java.png" ,frameWidth, 3623, p2, 2, gerador, powerUps,mem, player_images[1]);
+		JPanel bg2 = new BackGround(0, 0, "/ThreadRunImages/java.png" ,frameWidth, 3623, p2, 2, gerador, powerUps,mem, player_images[1]);
 		bg2.setBounds(370, 0, 370, 720);
 		frame.getContentPane().add(bg2);
 		
-		JPanel bg3 = new BackGround(0, 0, "python.png" ,frameWidth, 3623, p3,  3, gerador, powerUps,mem, player_images[2]);
+		JPanel bg3 = new BackGround(0, 0, "/ThreadRunImages/python.png" ,frameWidth, 3623, p3,  3, gerador, powerUps,mem, player_images[2]);
 		bg3.setBounds(740, 0, 370, 720);
 		frame.getContentPane().add(bg3);
 		
