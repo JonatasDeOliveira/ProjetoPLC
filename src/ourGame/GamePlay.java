@@ -69,15 +69,15 @@ public class GamePlay implements Runnable{
 		Image memImg = ImageIO.read(getClass().getResource("mem.png"));
 		Memoria mem = new Memoria(0,740,memImg);
 		
-		JPanel bg1 = new BackGround(0, 0, "cplusplus.png" ,frameWidth, 3623, p1, 1, gerador, powerUps, mem);
+		JPanel bg1 = new BackGround(0, 0, "cplusplus.png" ,frameWidth, 3623, p1, 1, gerador, powerUps, mem, player_images[0]);
 		bg1.setBounds(0, 0, 370, 720);
 		frame.getContentPane().add(bg1);
 		
-		JPanel bg2 = new BackGround(0, 0, "java.png" ,frameWidth, 3623, p2, 2, gerador, powerUps,mem);
+		JPanel bg2 = new BackGround(0, 0, "java.png" ,frameWidth, 3623, p2, 2, gerador, powerUps,mem, player_images[1]);
 		bg2.setBounds(370, 0, 370, 720);
 		frame.getContentPane().add(bg2);
 		
-		JPanel bg3 = new BackGround(0, 0, "python.png" ,frameWidth, 3623, p3,  3, gerador, powerUps,mem);
+		JPanel bg3 = new BackGround(0, 0, "python.png" ,frameWidth, 3623, p3,  3, gerador, powerUps,mem, player_images[2]);
 		bg3.setBounds(740, 0, 370, 720);
 		frame.getContentPane().add(bg3);
 		
