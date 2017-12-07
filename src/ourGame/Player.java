@@ -30,7 +30,7 @@ public class Player extends Sprite{
 	public Player(int numPlayer, int initPosX, int initPosY, KeyCode left, KeyCode right, Image img, int lLimit, int rLimit ) throws IOException {
 		super(initPosX,initPosY,img);
 		
-		this.vel = 15;
+		this.vel = 20;
 		this.charL = left;
 		this.charR = right;
 		this.numPlayer = numPlayer;

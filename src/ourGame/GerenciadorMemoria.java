@@ -35,7 +35,7 @@ public class GerenciadorMemoria implements Runnable {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {}
 			
-			if(this.cont.getCounter() >= 200) {
+			if(this.cont.getCounter() >= 300) {
 				this.endOfGame = true;
 				bg1.setPrintPw(false);
 				bg2.setPrintPw(false);
@@ -45,7 +45,7 @@ public class GerenciadorMemoria implements Runnable {
 				bg3.pw1.disable();
 			}
 			
-			if (this.cont.getCounter()%20 == 0 && this.cont.getCounter() < 300 && this.cont.getCounter() > 0 && !this.isEndOfGame()) {
+			if (this.cont.getCounter()%50 == 0 && this.cont.getCounter() < 300 && this.cont.getCounter() > 0 && !this.isEndOfGame()) {
 				bg1.setPrintPw(false);
 				bg2.setPrintPw(false);
 				bg3.setPrintPw(false);

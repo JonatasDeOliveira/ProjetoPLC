@@ -21,7 +21,7 @@ public class Counter implements Runnable {
 			if (!this.isPaused) {
 				aux = System.currentTimeMillis();
 				if (aux - current >= 1000) {
-					this.counter++;
+					setCounter(getCounter()+1);
 					current = System.currentTimeMillis();
 				}
 			} else {

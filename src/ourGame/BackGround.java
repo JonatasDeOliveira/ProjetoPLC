@@ -208,7 +208,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 			if (gameRunning) {
 				if (!this.counterPw.isPaused) {
 					time += System.currentTimeMillis();
-					if (timeInit - time > 1000) {
+					if (timeInit - time > 100) {
 						timeInit = System.currentTimeMillis();
 						time = 0;
 						movePlayer();
