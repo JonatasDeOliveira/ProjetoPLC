@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,7 +40,7 @@ public class Menu extends JFrame {
 	private int count;
 	private JButton btn_StarGame;
 	private ImageIcon[] player_images = new ImageIcon[3];
-
+	private Timer t;
 
 	private JLabel lblSelectYourPlayer;
 	private JLabel player_4;
@@ -110,7 +111,7 @@ public class Menu extends JFrame {
 		player_2.setBounds(820, 291, 150, 150);
 		getContentPane().add(player_2);
 
-		javax.swing.Timer t;
+	
 
 		lblSelectYourPlayer = new JLabel("SELECT PLAYER 1");
 		lblSelectYourPlayer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -195,8 +196,8 @@ public class Menu extends JFrame {
 		}else if(count == 1) {
 			lblSelectYourPlayer.setText("SELECT PLAYER 3");
 		}else if (count == 2) {
-			lblSelectYourPlayer.setText("PRESS START!!!");
 			lblInstructions.setVisible(true);
+			t.stop();
 			name_game.setVisible(false);	
 			//btn_StarGame.setVisible(true);
 			player_1.setVisible(false);
@@ -204,6 +205,7 @@ public class Menu extends JFrame {
 			player_3.setVisible(false);
 			player_4.setVisible(false);
 			fundo_menu.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image_instructions1.jpg")));
+			lblSelectYourPlayer.setVisible(false);
 			btn_StarGame.setVisible(true);
 			
 		}
