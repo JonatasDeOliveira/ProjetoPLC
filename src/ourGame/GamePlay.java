@@ -28,10 +28,10 @@ public class GamePlay implements Runnable{
 	public void run() {
 		try {
 			call();
-		} catch (IOException e) {}
+		} catch (IOException | InterruptedException e) {}
 	}
 
-	private void call() throws IOException {
+	private void call() throws IOException, InterruptedException {
 int numPlayers = 3;
 		
 		used = new boolean[6];
@@ -104,7 +104,7 @@ int numPlayers = 3;
 		t2.start();
 		t3.start();
 		
-		GerenciadorMemoria gm = new GerenciadorMemoria((BackGround)bg1, (BackGround)bg2, (BackGround)bg3);
+		GerenciadorMemoria gm = new GerenciadorMemoria((BackGround)bg1, (BackGround)bg2, (BackGround)bg3, gerador);
 		Thread gmT = new Thread(gm);
 		
 		gerador.getCont1().isPaused = false;
@@ -113,6 +113,11 @@ int numPlayers = 3;
 		gerador.start();
 		gmT.start();
 		
+		while(!gm.isEndOfGame()) {
+			Thread.sleep(100);
+		}
+		
+		System.out.println("cabou essa merda");
 	}
 	
 	/*public static void main(String[] args) throws IOException{

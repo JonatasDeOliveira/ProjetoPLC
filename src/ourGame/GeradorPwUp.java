@@ -56,6 +56,10 @@ public class GeradorPwUp{
 		}else if(i == 3) {
 			this.cont1.setPaused(flag);
 			this.cont2.setPaused(flag);
+		}else {
+			this.cont1.setPaused(flag);
+			this.cont2.setPaused(flag);
+			this.cont3.setPaused(flag);
 		}
 	}
 	

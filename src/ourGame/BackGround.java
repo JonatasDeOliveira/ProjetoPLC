@@ -38,6 +38,8 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	private boolean printPw;
 	private Memoria mem;
 	private int memVel;
+	private boolean endOfGame;
+	private boolean gameRunning;
 
 	public BackGround(int initPosX, int initPosY, String imgName, int width, int height, Player player, int index,
 			GeradorPwUp gerador, String powerUps[], Memoria mem) throws IOException {
@@ -65,21 +67,25 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 		} else {
 			this.counterPw = this.gerador.getCont3();
 		}
+		this.gameRunning = true;
 
 		setFocusable(true);
 		bg2 = ImageIO.read(getClass().getResource(imgName));
 		bg1 = bg2;
 
 		Timer timer = new Timer(40, new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				if (!counterPw.isPaused) {
-					moveBackground(bg1, bg2);
-					if (pw1.isEnable() && printPw)
-						movePowerUp();
-					if (!printPw)
-						moveMemoria();
+				if (!endOfGame) {
+					if (!counterPw.isPaused) {
+						moveBackground(bg1, bg2);
+						if (pw1.isEnable() && printPw)
+							movePowerUp();
+						if (!printPw && gameRunning)
+							moveMemoria();
+					}
+					repaint();
 				}
-				repaint();
 			}
 		});
 		bg1 = bg1.getScaledInstance(width, height, 1);
@@ -159,13 +165,12 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 
 		Random rand = new Random();
 
-		while (true) {
+		while (!this.endOfGame) {
 
 			if (!printPw) {
-
 				synchronized (mem) {
-					gerador.setOthersIsPaused(this.index, false);
 					if (collision(mem)) {
+						gameRunning = false;
 						this.counterPw.setPaused(true);
 						gerador.setOthersIsPaused(this.index, true);
 						Image i = null;
@@ -196,60 +201,61 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 						this.counterPw.setPaused(false);
 						this.setPrintPw(true);
 
-
 					}
 				}
 			}
 
-			if (!this.counterPw.isPaused) {
-				time += System.currentTimeMillis();
-				if (timeInit - time > 1000) {
-					timeInit = System.currentTimeMillis();
-					time = 0;
-					movePlayer();
-				}
+			if (gameRunning) {
+				if (!this.counterPw.isPaused) {
+					time += System.currentTimeMillis();
+					if (timeInit - time > 1000) {
+						timeInit = System.currentTimeMillis();
+						time = 0;
+						movePlayer();
+					}
 
-				if (this.pw1.isEnable()) {
-					if (collision(this.pw1)) {
-						if (this.pw1.getTipo() == 0) {
-							gerador.setOthersIsPaused(this.index, true);
-						} else if (this.pw1.getTipo() == 1) {
-							this.counterPw.setPaused(true);
+					if (this.pw1.isEnable()) {
+						if (collision(this.pw1)) {
+							if (this.pw1.getTipo() == 0) {
+								gerador.setOthersIsPaused(this.index, true);
+							} else if (this.pw1.getTipo() == 1) {
+								this.counterPw.setPaused(true);
+							}
+							this.pw1.disable();
+							this.pw1.setVel(0);
+							this.pw1.setY(-20);
 						}
-						this.pw1.disable();
-						this.pw1.setVel(0);
-						this.pw1.setY(-20);
-					}
-				}
-
-				if ((this.counterPw.getCounter()) % 7 == 0 && this.counterPw.getCounter() != 0) {
-					Image image = null;
-					int x = 0;
-					int k = rand.nextInt(6);
-
-					try {
-						image = ImageIO.read(getClass().getResource(this.powerUps[k]));
-					} catch (IOException e1) {
 					}
 
-					x = rand.nextInt(370 - image.getWidth(null));
+					if ((this.counterPw.getCounter()) % 7 == 0 && this.counterPw.getCounter() != 0) {
+						Image image = null;
+						int x = 0;
+						int k = rand.nextInt(6);
 
-					try {
+						try {
+							image = ImageIO.read(getClass().getResource(this.powerUps[k]));
+						} catch (IOException e1) {
+						}
 
-						this.setPowerUp(new PowerUp(x, 720, image, k % 2));
-					} catch (IOException e) {
+						x = rand.nextInt(370 - image.getWidth(null));
+
+						try {
+
+							this.setPowerUp(new PowerUp(x, 720, image, k % 2));
+						} catch (IOException e) {
+						}
+
+						this.counterPw.setCounter(this.counterPw.getCounter() + 1);
 					}
+				} else if (this.printPw) {
+					long current = System.currentTimeMillis(), aux = 0;
 
-					this.counterPw.setCounter(this.counterPw.getCounter() + 1);
+					while (aux - current < 5000) {
+						aux = System.currentTimeMillis();
+					}
+					this.counterPw.setPaused(false);
+
 				}
-			} else {
-				long current = System.currentTimeMillis(), aux = 0;
-
-				while (aux - current < 5000) {
-					aux = System.currentTimeMillis();
-				}
-				this.counterPw.setPaused(false);
-
 			}
 
 		}
@@ -300,6 +306,18 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 
 	public void setMemVel(int x) {
 		this.memVel = x;
+	}
+
+	public void setEndOfGame(boolean b) {
+		this.endOfGame = b;
+	}
+
+	public boolean isGameRunning() {
+		return gameRunning;
+	}
+
+	public void setGameRunning(boolean gameRunning) {
+		this.gameRunning = gameRunning;
 	}
 
 }
