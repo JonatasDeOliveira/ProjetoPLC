@@ -30,7 +30,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	Image playerImage;
 	PowerUp pw1;
 	int index;
-	GeradorPwUp gerador;
+	GerenciadorCounter gerador;
 	private int dir;
 	Counter counterPw;
 	private String powerUps[];
@@ -40,7 +40,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	private boolean gameRunning;
 
 	public BackGround(int initPosX, int initPosY, String imgName, int width, int height, Player player, int index,
-			GeradorPwUp gerador, String powerUps[], Memoria mem) throws IOException {
+			GerenciadorCounter gerador, String powerUps[], Memoria mem) throws IOException {
 		// addMouseListener(this);
 
 		this.mem = mem;

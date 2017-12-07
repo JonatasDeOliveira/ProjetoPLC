@@ -1,9 +1,9 @@
 package ourGame;
 
-public class GeradorPwUp{
+public class GerenciadorCounter{
 	public Counter cont1, cont2, cont3;
 	
-	public GeradorPwUp() {
+	public GerenciadorCounter() {
 		this.cont1 = new Counter();
 		this.cont2 = new Counter();
 		this.cont3 = new Counter();
