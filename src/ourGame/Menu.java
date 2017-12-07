@@ -70,6 +70,7 @@ public class Menu extends JFrame {
 		btn_StarGame.setBounds(441, 539, 185, 42);
 		getContentPane().add(btn_StarGame);
 		btn_StarGame.setVisible(false);
+		
 		player_1 = new JLabel("New label");
 
 		player_1.addMouseListener(new MouseAdapter() {
@@ -113,18 +114,7 @@ public class Menu extends JFrame {
 		lblSelectYourPlayer.setFont(new Font("Courier New", Font.PLAIN, 48));
 		lblSelectYourPlayer.setBounds(124, 167, 846, 111);
 		getContentPane().add(lblSelectYourPlayer);
-
-		t = new javax.swing.Timer(300, new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if (lblSelectYourPlayer.isVisible() == true) {
-					lblSelectYourPlayer.setVisible(false);
-				}else{
-					lblSelectYourPlayer.setVisible(true);
-				}   
-			}
-		});
-		t.start();
+		
 		player_3 = new JLabel("New label");
 		player_3.addMouseListener(new MouseAdapter() {
 			@Override
@@ -141,7 +131,7 @@ public class Menu extends JFrame {
 		player_3.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/ullayne_player.jpg")));
 		player_3.setBounds(579, 291, 150, 150);
 		getContentPane().add(player_3);
-
+		
 		player_4 = new JLabel("New label");
 		player_4.addMouseListener(new MouseAdapter() {
 			@Override
@@ -158,6 +148,19 @@ public class Menu extends JFrame {
 		player_4.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/lucas_player.jpg")));
 		player_4.setBounds(113, 291, 150, 150);
 		getContentPane().add(player_4);
+
+		t = new javax.swing.Timer(300, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (lblSelectYourPlayer.isVisible() == true) {
+					lblSelectYourPlayer.setVisible(false);
+				}else{
+					lblSelectYourPlayer.setVisible(true);
+				}   
+			}
+		});
+		t.start();
+		
 
 		name_game = new JLabel("THREAD RUN");
 		name_game.setHorizontalAlignment(SwingConstants.CENTER);
@@ -196,7 +199,7 @@ public class Menu extends JFrame {
 			player_2.setVisible(false);
 			player_3.setVisible(false);
 			player_4.setVisible(false);
-			
+			btn_StarGame.setVisible(true);
 			
 		}
 	}
