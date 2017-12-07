@@ -63,7 +63,7 @@ public class GerenciadorMemoria implements Runnable {
 				
 				Image i = null;
 				try {
-					i = ImageIO.read(getClass().getResource("mem.png"));
+					i = ImageIO.read(getClass().getResource("/ThreadRunImages/mem.png"));
 				} catch (IOException e) {}
 				
 				Memoria m = new Memoria(0,740,i);
