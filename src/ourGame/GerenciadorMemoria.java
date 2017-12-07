@@ -12,9 +12,9 @@ public class GerenciadorMemoria implements Runnable {
 	BackGround bg2;
 	BackGround bg3;
 	private boolean endOfGame; 
-	private GeradorPwUp gpu;
+	private GerenciadorCounter gpu;
 
-	public GerenciadorMemoria(BackGround bg1, BackGround bg2, BackGround bg3, GeradorPwUp gpu) {
+	public GerenciadorMemoria(BackGround bg1, BackGround bg2, BackGround bg3, GerenciadorCounter gpu) {
 		this.bg1 = bg1;
 		this.bg2 = bg2;
 		this.bg3 = bg3;

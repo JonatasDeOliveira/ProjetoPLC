@@ -64,7 +64,7 @@ public class GamePlay implements Runnable{
 		i = ImageIO.read(getClass().getResource("player3.png"));
 		Player p3 = new Player(3,0+(frameWidth/2), 0, KeyCode.LEFT, KeyCode.RIGHT, i);
 		
-		GeradorPwUp gerador = new GeradorPwUp();
+		GerenciadorCounter gerador = new GerenciadorCounter();
 		
 		Image memImg = ImageIO.read(getClass().getResource("mem.png"));
 		Memoria mem = new Memoria(0,740,memImg);
