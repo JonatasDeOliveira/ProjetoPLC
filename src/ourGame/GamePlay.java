@@ -6,19 +6,27 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import javafx.scene.input.KeyCode;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class GamePlay implements Runnable{
 	
 	private String powerUps[] = new String[6];
 	private boolean used[];
 	private ImageIcon[] player_images;
+	private JLabel winner;
 	
 	public GamePlay(ImageIcon[] player_images) throws IOException{
 		this.player_images = player_images;
@@ -68,6 +76,26 @@ public class GamePlay implements Runnable{
 		
 		Image memImg = ImageIO.read(getClass().getResource("/ThreadRunImages/mem.png"));
 		Memoria mem = new Memoria(0,740,memImg);
+		
+		JLabel text_winner = new JLabel("CONGRATULATIONS! YOU ARE THE WINNER");
+		text_winner.setHorizontalAlignment(SwingConstants.CENTER);
+		text_winner.setForeground(new Color(255, 140, 0));
+		text_winner.setFont(new Font("Courier New", Font.BOLD, 30));
+		text_winner.setBounds(162, 398, 785, 150);
+		frame.getContentPane().add(text_winner);
+		text_winner.setVisible(false);
+		winner = new JLabel("");
+		winner.setHorizontalAlignment(SwingConstants.CENTER);
+		winner.setBounds(479, 203, 150, 150);
+		frame.getContentPane().add(winner);
+		winner.setVisible(false);
+		
+		JLabel panel_winner = new JLabel();
+		panel_winner.setBounds(0, 0, 1109, 682);
+		frame.getContentPane().add(panel_winner);
+		panel_winner.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image.png")));
+		panel_winner.setVisible(false);
+
 		
 		JPanel bg1 = new BackGround(0, 0, "/ThreadRunImages/cplusplus.png" ,frameWidth, 3623, p1, 1, gerador, powerUps, mem, player_images[0]);
 		bg1.setBounds(0, 0, 370, 720);
@@ -140,9 +168,23 @@ public class GamePlay implements Runnable{
 			else terceiro = player_images[1];
 		}
 		
-		// TODO "Fechar" tela do jogo e imprimir tela de vencedores
+		Thread.sleep(2000);
 		
-		System.out.println("cabou essa merda");
+		// TODO "Fechar" tela do jogo e imprimir tela de vencedores
+		panel_winner.setVisible(true);
+		winner.setIcon((primeiro));
+		winner.setVisible(true);
+		Timer t = new javax.swing.Timer(300, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (text_winner.isVisible() == true) {
+					text_winner.setVisible(false);
+				}else{
+					text_winner.setVisible(true);
+				}   
+			}
+		});
+		t.start();
 	}
 	
 }
