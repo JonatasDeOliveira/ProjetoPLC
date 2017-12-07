@@ -81,6 +81,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 			public void actionPerformed(ActionEvent e) {
 				if (!endOfGame) {
 					if (!counterPw.isPaused) {
+						movePlayer();
 						moveBackground(bg1, bg2);
 						if (pw1.isEnable() && printPw)
 							movePowerUp();
@@ -165,8 +166,6 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 
 	@Override
 	public void run() {
-		long timeInit = System.currentTimeMillis();
-		long time = 0;
 
 		Random rand = new Random();
 
@@ -212,12 +211,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 
 			if (gameRunning) {
 				if (!this.counterPw.isPaused) {
-					time += System.currentTimeMillis();
-					if (timeInit - time > 100) {
-						timeInit = System.currentTimeMillis();
-						time = 0;
-						movePlayer();
-					}
+					
 
 					if (this.pw1.isEnable()) {
 						if (collision(this.pw1)) {
