@@ -3,7 +3,6 @@ package ourGame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -37,7 +36,6 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 	private String powerUps[];
 	private boolean printPw;
 	private Memoria mem;
-	private int memVel;
 	private boolean endOfGame;
 	private boolean gameRunning;
 
@@ -46,7 +44,6 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 		// addMouseListener(this);
 
 		this.mem = mem;
-		this.memVel = 3;
 		this.printPw = true;
 		this.dir = 0;
 		addKeyListener(this);
@@ -208,7 +205,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 			if (gameRunning) {
 				if (!this.counterPw.isPaused) {
 					time += System.currentTimeMillis();
-					if (timeInit - time > 1000) {
+					if (timeInit - time > 100) {
 						timeInit = System.currentTimeMillis();
 						time = 0;
 						movePlayer();
@@ -288,6 +285,10 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 		this.player.movePlayer(this.dir);
 	}
 
+	public Counter getCounterPw() {
+		return counterPw;
+	}
+
 	void setDir(int dir) {
 		this.dir = dir;
 	}
@@ -302,10 +303,6 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 
 	public void setMem(Memoria m) {
 		this.mem = m;
-	}
-
-	public void setMemVel(int x) {
-		this.memVel = x;
 	}
 
 	public void setEndOfGame(boolean b) {
