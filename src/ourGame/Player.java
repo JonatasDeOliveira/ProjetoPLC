@@ -3,8 +3,6 @@ package ourGame;
 import java.awt.Image;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
 import javafx.scene.input.KeyCode;
 
 public class Player extends Sprite{

@@ -32,7 +32,7 @@ public class GamePlay implements Runnable{
 	}
 
 	private void call() throws IOException, InterruptedException {
-int numPlayers = 3;
+		int numPlayers = 3;
 		
 		used = new boolean[6];
 		for(int i = 0;i<6;i++) used[i] = false;
@@ -117,10 +117,32 @@ int numPlayers = 3;
 			Thread.sleep(100);
 		}
 		
+		
+		ImageIcon primeiro = null;
+		ImageIcon segundo = null;
+		ImageIcon terceiro = null;
+		if(((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg2).getCounterPw().getCounter() &&
+				((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg3).getCounterPw().getCounter()) {
+			primeiro = player_images[0];
+			if(((BackGround)bg2).getCounterPw().getCounter() >= ((BackGround)bg3).getCounterPw().getCounter())
+				segundo = player_images[1];
+			else terceiro = player_images[2];
+		}else if(((BackGround)bg2).getCounterPw().getCounter() > ((BackGround)bg1).getCounterPw().getCounter() &&
+				((BackGround)bg2).getCounterPw().getCounter() > ((BackGround)bg3).getCounterPw().getCounter()) {
+			primeiro = player_images[1];
+			if(((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg3).getCounterPw().getCounter())
+				segundo = player_images[0];
+			else terceiro = player_images[2];
+		}else {
+			primeiro = player_images[2];
+			if(((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg2).getCounterPw().getCounter())
+				segundo = player_images[0];
+			else terceiro = player_images[1];
+		}
+		
+		// TODO "Fechar" tela do jogo e imprimir tela de vencedores
+		
 		System.out.println("cabou essa merda");
 	}
 	
-	/*public static void main(String[] args) throws IOException{
-		new GamePlay();
-	}*/
 }

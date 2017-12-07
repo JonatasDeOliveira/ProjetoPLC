@@ -32,7 +32,7 @@ public class Counter implements Runnable {
 	}
 
 	public long getCounter() {
-		return counter;
+			return counter;
 	}
 
 	public void setCounter(long counter) {
