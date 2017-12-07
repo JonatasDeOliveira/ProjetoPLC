@@ -35,7 +35,7 @@ public class GerenciadorMemoria implements Runnable {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {}
 			
-			if(this.cont.getCounter() >= 300) {
+			if(this.cont.getCounter() >= 200) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {}
