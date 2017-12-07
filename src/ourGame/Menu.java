@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JTextPane;
 
 public class Menu extends JFrame {
 
@@ -45,6 +47,7 @@ public class Menu extends JFrame {
 	private JLabel player_2;
 	private JLabel lblInstructions;
 	private JLabel name_game;
+	private JLabel fundo_menu;
 
 
 	/**
@@ -112,7 +115,7 @@ public class Menu extends JFrame {
 		lblSelectYourPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectYourPlayer.setForeground(new Color(255, 140, 0));
 		lblSelectYourPlayer.setFont(new Font("Courier New", Font.PLAIN, 48));
-		lblSelectYourPlayer.setBounds(124, 167, 846, 111);
+		lblSelectYourPlayer.setBounds(123, 138, 846, 89);
 		getContentPane().add(lblSelectYourPlayer);
 		
 		player_3 = new JLabel("New label");
@@ -177,7 +180,7 @@ public class Menu extends JFrame {
 		getContentPane().add(lblInstructions);
 		lblInstructions.setVisible(false);
 
-		JLabel fundo_menu = new JLabel("");
+		fundo_menu = new JLabel("");
 		fundo_menu.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image.png")));
 		fundo_menu.setBounds(0, 0, 1094, 682);
 		getContentPane().add(fundo_menu);
@@ -199,6 +202,7 @@ public class Menu extends JFrame {
 			player_2.setVisible(false);
 			player_3.setVisible(false);
 			player_4.setVisible(false);
+			fundo_menu.setIcon(new ImageIcon(getClass().getResource("/ThreadRunImages/fundo_image_instructions1.jpg")));
 			btn_StarGame.setVisible(true);
 			
 		}
