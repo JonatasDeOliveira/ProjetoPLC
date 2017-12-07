@@ -36,6 +36,10 @@ public class GerenciadorMemoria implements Runnable {
 			} catch (InterruptedException e) {}
 			
 			if(this.cont.getCounter() >= 300) {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {}
+				
 				this.endOfGame = true;
 				bg1.setPrintPw(false);
 				bg2.setPrintPw(false);
