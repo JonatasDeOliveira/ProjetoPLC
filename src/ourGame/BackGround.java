@@ -172,7 +172,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 						gerador.setOthersIsPaused(this.index, true);
 						Image i = null;
 						try {
-							i = ImageIO.read(getClass().getResource("mem" + this.index + ".png"));
+							i = ImageIO.read(getClass().getResource("/ThreadRunImages/mem" + this.index + ".png"));
 						} catch (IOException e) {
 						}
 
@@ -230,7 +230,7 @@ public class BackGround extends JPanel implements ActionListener, KeyListener, R
 						int k = rand.nextInt(6);
 
 						try {
-							image = ImageIO.read(getClass().getResource(this.powerUps[k]));
+							image = ImageIO.read(getClass().getResource("/ThreadRunImages/"+this.powerUps[k]));
 						} catch (IOException e1) {
 						}
 
