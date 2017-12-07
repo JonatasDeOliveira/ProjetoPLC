@@ -28,11 +28,11 @@ public class GamePlay implements Runnable{
 	public void run() {
 		try {
 			call();
-		} catch (IOException e) {}
+		} catch (IOException | InterruptedException e) {}
 	}
 
-	private void call() throws IOException {
-int numPlayers = 3;
+	private void call() throws IOException, InterruptedException {
+		int numPlayers = 3;
 		
 		used = new boolean[6];
 		for(int i = 0;i<6;i++) used[i] = false;
@@ -104,7 +104,7 @@ int numPlayers = 3;
 		t2.start();
 		t3.start();
 		
-		GerenciadorMemoria gm = new GerenciadorMemoria((BackGround)bg1, (BackGround)bg2, (BackGround)bg3);
+		GerenciadorMemoria gm = new GerenciadorMemoria((BackGround)bg1, (BackGround)bg2, (BackGround)bg3, gerador);
 		Thread gmT = new Thread(gm);
 		
 		gerador.getCont1().isPaused = false;
@@ -113,9 +113,36 @@ int numPlayers = 3;
 		gerador.start();
 		gmT.start();
 		
+		while(!gm.isEndOfGame()) {
+			Thread.sleep(100);
+		}
+		
+		
+		ImageIcon primeiro = null;
+		ImageIcon segundo = null;
+		ImageIcon terceiro = null;
+		if(((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg2).getCounterPw().getCounter() &&
+				((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg3).getCounterPw().getCounter()) {
+			primeiro = player_images[0];
+			if(((BackGround)bg2).getCounterPw().getCounter() >= ((BackGround)bg3).getCounterPw().getCounter())
+				segundo = player_images[1];
+			else terceiro = player_images[2];
+		}else if(((BackGround)bg2).getCounterPw().getCounter() > ((BackGround)bg1).getCounterPw().getCounter() &&
+				((BackGround)bg2).getCounterPw().getCounter() > ((BackGround)bg3).getCounterPw().getCounter()) {
+			primeiro = player_images[1];
+			if(((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg3).getCounterPw().getCounter())
+				segundo = player_images[0];
+			else terceiro = player_images[2];
+		}else {
+			primeiro = player_images[2];
+			if(((BackGround)bg1).getCounterPw().getCounter() >= ((BackGround)bg2).getCounterPw().getCounter())
+				segundo = player_images[0];
+			else terceiro = player_images[1];
+		}
+		
+		// TODO "Fechar" tela do jogo e imprimir tela de vencedores
+		
+		System.out.println("cabou essa merda");
 	}
 	
-	/*public static void main(String[] args) throws IOException{
-		new GamePlay();
-	}*/
 }
