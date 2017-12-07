@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
@@ -37,7 +38,7 @@ public class Menu extends JFrame {
 	}
 	private int count;
 	private JButton btn_StarGame;
-	private static ImageIcon[] player_images = new ImageIcon[3];
+	private ImageIcon[] player_images = new ImageIcon[3];
 
 
 	private JLabel lblSelectYourPlayer;
@@ -211,6 +212,7 @@ public class Menu extends JFrame {
 		for (int i = 0; i < player_images.length; i++) {
 			if(player_images[i] == null){
 				player_images[i] = x;
+				i = player_images.length;
 			}
 
 		}
